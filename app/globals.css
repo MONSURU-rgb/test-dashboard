@@ -10,4 +10,9 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+
+}
+
+.aside-style {
+  @apply inline-flex gap-2 items-center px-4 py-3  rounded-lg hover:bg-primary-blue cursor-pointer text-primary-blue hover:text-white;
 }

@@ -7,7 +7,9 @@ import {
   DirectInbox,
   FavoriteChart,
   Home3,
+  LogoutCurve,
   ProfileCircle,
+  Setting2,
 } from "iconsax-react";
 import { BrandLogo } from "./components";
 
@@ -15,6 +17,7 @@ import { MantineProvider } from "@mantine/core";
 
 import { useTheme } from "next-themes";
 import { ThemeProvider } from "./components/shared/theme-provider";
+import clsx from "clsx";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,12 +34,8 @@ export default function RootLayout({
   const { theme } = useTheme();
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="grid grid-cols-[clamp(120px,16vw,300px)_1fr] dark:bg-black bg-white">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange>
+      <body className="grid grid-cols-[150px_1fr] dark:bg-black bg-white min-h-screen">
+        <ThemeProvider attribute="class" disableTransitionOnChange>
           <MantineProvider>
             <SidebarLayout />
             <main>{children}</main>
@@ -48,26 +47,52 @@ export default function RootLayout({
 }
 
 function SidebarLayout() {
+  const { theme } = useTheme();
+  console.log(theme);
   return (
-    <aside className="px-3 py-2 gap-3 flex flex-col justify-center">
-      <BrandLogo />
-      <ul className="text-primary-dark gap-2 grid">
-        <li className="inline-flex gap-2 items-center px-4 py-3 bg-primary-blue rounded-lg">
-          {" "}
-          <Home3 size="20" />
-          <span>Dashboard</span>
+    <aside className="flex flex-col max-h-screen py-3 ">
+      <section className="px-3 gap-3 flex flex-col flex-1">
+        <BrandLogo />
+        <ul
+          className={clsx(
+            "gap-2 grid",
+            theme === "dark" ? "text-primary-dark" : "text-white"
+          )}>
+          <li
+            className={clsx(
+              "inline-flex gap-2 items-center px-4 py-3 bg-primary-blue rounded-lg"
+            )}>
+            {" "}
+            <Home3 size="20" />
+            <span>Dashboard</span>
+          </li>
+          <li className="aside-style">
+            <ProfileCircle size="20" />
+            <span>Profile</span>
+          </li>
+          <li className="aside-style">
+            <FavoriteChart size="20" />
+            <span>Favorites</span>
+          </li>
+          <li className="aside-style">
+            <DirectInbox size="20" />
+            <span>Inbox</span>
+          </li>
+        </ul>
+      </section>
+
+      <ul
+        className={clsx(
+          "gap-2 grid",
+          theme === "dark" ? "text-primary-dark px-3" : "text-white px-3"
+        )}>
+        <li className="aside-style">
+          <Setting2 size="20" />
+          <span>Settings</span>
         </li>
-        <li className="inline-flex gap-2 items-center px-4 py-3 bg-primary-blue rounded-lg">
-          <ProfileCircle size="20" />
-          <span>Profile</span>
-        </li>
-        <li className="inline-flex gap-2 items-center px-4 py-3 bg-primary-blue rounded-lg">
-          <FavoriteChart size="20" />
-          <span>Favorites</span>
-        </li>
-        <li className="inline-flex gap-2 items-center px-4 py-3 bg-primary-blue rounded-lg">
-          <DirectInbox size="20" />
-          <span>Inbox</span>
+        <li className="aside-style">
+          <LogoutCurve size="20" />
+          <span>Log out</span>
         </li>
       </ul>
     </aside>
