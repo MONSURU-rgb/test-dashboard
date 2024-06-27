@@ -13,7 +13,7 @@ import {
 } from "iconsax-react";
 import { BrandLogo } from "./components";
 
-import { MantineProvider } from "@mantine/core";
+import { MantineProvider, createTheme } from "@mantine/core";
 
 import { useTheme } from "next-themes";
 import { ThemeProvider } from "./components/shared/theme-provider";
@@ -32,15 +32,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const { theme } = useTheme();
+
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="grid grid-cols-[150px_1fr] dark:bg-black bg-white min-h-screen">
-        <ThemeProvider attribute="class" disableTransitionOnChange>
-          <MantineProvider>
+      <body className="grid grid-cols-[200px_1fr] bg-[#f9f9f993] dark:bg-[#113264] min-h-screen">
+        <MantineProvider>
+          <ThemeProvider attribute="class" disableTransitionOnChange>
             <SidebarLayout />
-            <main>{children}</main>
-          </MantineProvider>
-        </ThemeProvider>
+            <main className="w-full overflow-auto">{children}</main>
+          </ThemeProvider>
+        </MantineProvider>
       </body>
     </html>
   );
@@ -50,12 +51,12 @@ function SidebarLayout() {
   const { theme } = useTheme();
   console.log(theme);
   return (
-    <aside className="flex flex-col max-h-screen py-3 ">
+    <aside className="flex flex-col max-h-screen py-4 bg-slate-300 dark:bg-slate-950">
       <section className="px-3 gap-3 flex flex-col flex-1">
         <BrandLogo />
         <ul
           className={clsx(
-            "gap-2 grid",
+            "gap-2 flex flex-col",
             theme === "dark" ? "text-primary-dark" : "text-white"
           )}>
           <li

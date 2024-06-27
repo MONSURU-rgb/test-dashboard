@@ -1,0 +1,104 @@
+{
+  "dateRanges": [
+    "Last 7 days",
+    "Last 30 days",
+    "This month",
+    "Last month",
+    "Last 3 months",
+    "Last 6 months",
+    "Year to date",
+    "Last year",
+    "Custom range"
+  ],
+  "summary": {
+    "totalSalesUnits": {
+      "value": 12345,
+      "percentageChange": 5.6
+    },
+    "totalSalesValue": {
+      "value": 987654.32,
+      "percentageChange": 4.3
+    }
+  },
+  "topSellingProducts": {
+    "Last 7 days": [
+      { "productName": "Product A", "salesUnits": 123 },
+      { "productName": "Product B", "salesUnits": 112 },
+      { "productName": "Product C", "salesUnits": 102 },
+      { "productName": "Product D", "salesUnits": 98 },
+      { "productName": "Product E", "salesUnits": 87 }
+    ],
+    "Last 30 days": [
+      { "productName": "Product A", "salesUnits": 1230 },
+      { "productName": "Product B", "salesUnits": 1120 },
+      { "productName": "Product C", "salesUnits": 1020 },
+      { "productName": "Product D", "salesUnits": 980 },
+      { "productName": "Product E", "salesUnits": 870 }
+    ]
+  },
+  "charts": {
+    "totalSalesOverTime": {
+      "Last 7 days": {
+        "data": [
+          { "date": "2023-01-01", "sales": 123 },
+          { "date": "2023-01-02", "sales": 234 },
+          { "date": "2023-01-03", "sales": 345 }
+        ],
+        "averageSales": 234
+      },
+      "Last 30 days": {
+        "data": [
+          { "date": "2023-01-01", "sales": 1230 },
+          { "date": "2023-01-02", "sales": 1340 },
+          { "date": "2023-01-03", "sales": 1450 }
+        ],
+        "averageSales": 1340
+      }
+    },
+    "salesByCategory": {
+      "Last 7 days": [
+        { "category": "Category A", "sales": 345 },
+        { "category": "Category B", "sales": 234 },
+        { "category": "Category C", "sales": 123 },
+        { "category": "Category D", "sales": 98 }
+      ],
+      "Last 30 days": [
+        { "category": "Category A", "sales": 3450 },
+        { "category": "Category B", "sales": 2340 },
+        { "category": "Category C", "sales": 1230 },
+        { "category": "Category D", "sales": 980 }
+      ]
+    },
+    "salesAndProfits": {
+      "Last 7 days": {
+        "data": [
+          { "date": "2023-01-01", "sales": 123, "profit": 12 },
+          { "date": "2023-01-02", "sales": 234, "profit": 23 },
+          { "date": "2023-01-03", "sales": 345, "profit": 34 }
+        ]
+      },
+      "Last 30 days": {
+        "data": [
+          { "date": "2023-01-01", "sales": 1230, "profit": 120 },
+          { "date": "2023-01-02", "sales": 1340, "profit": 230 },
+          { "date": "2023-01-03", "sales": 1450, "profit": 340 }
+        ]
+      }
+    }
+  },
+  "insightsAndRecommendations": {
+    "Last 7 days": {
+      "insights": "Sales for Europe is the fastest growing and North America is the slowest growing.",
+      "recommendations": "Analyze the performance of various product categories across sales channels."
+    },
+    "Last 30 days": {
+      "insights": "Sales for Asia is the fastest growing and South America is the slowest growing.",
+      "recommendations": "Focus on marketing strategies in South America."
+    }
+  },
+  "sourceFiles": [
+    "data/salesData.json",
+    "data/productData.json",
+    "data/categoryData.json"
+  ]
+}
