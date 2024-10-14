@@ -101,6 +101,41 @@ function DashboardContent() {
     setSales(data);
   };
 
+  function getAvailableRooms(rooms: number, occupies: Array<[number, number]>) {
+    occupies.sort((a, b) => a[0] - b[0]);
+    let merged: Array<[number, number]> = [];
+    let prev = occupies[0];
+
+    for (let i = 1; i < occupies.length; i++) {
+      let curr = occupies[i];
+      if (curr[0] <= prev[1]) {
+        prev = [prev[0], Math.max(prev[1], curr[1])]; // Merge ranges
+      } else {
+        merged.push(prev);
+        prev = curr;
+      }
+    }
+    merged.push(prev); // Add the last range
+
+    // Step 3: Calculate total available rooms
+    let totalOccupiedRooms = 0;
+
+    for (let [start, end] of merged) {
+      totalOccupiedRooms += end - start + 1; // Count occupied rooms in each range
+    }
+
+    const totalAvailableRooms = rooms - totalOccupiedRooms;
+    return totalAvailableRooms;
+  }
+
+  console.log({
+    rooms: getAvailableRooms(10, [
+      [1, 2],
+      [2, 4],
+      [9, 10],
+    ]),
+  });
+
   return (
     <section className="flex flex-col gap-4 px-6">
       <div className="flex justify-between items-center gap-5">
